@@ -9,6 +9,7 @@ wordRevealed = wordGuess
 x = 0
 while (x < len(wordGuess)):
     wordGuess[x] = "_"
+    x += 1
 
 print(wordGuess)
 print(wordRevealed)
