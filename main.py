@@ -8,4 +8,7 @@ wordRevealed = wordGuess
 # Zašifrovat slovo, aby nebyly vidět písmenka
 x = 0
 while (x < len(wordGuess)):
-    wordRevealed[x] = "_"
+    wordGuess[x] = "_"
+
+print(wordGuess)
+print(wordRevealed)
