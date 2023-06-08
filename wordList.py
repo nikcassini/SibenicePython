@@ -1,2 +1,4 @@
-print("Test")
-print(258)
+words = []
+
+def getWord():
+    print("HOTOVO")
