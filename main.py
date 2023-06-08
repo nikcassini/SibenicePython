@@ -5,6 +5,7 @@ win = False
 wordGuess = wordList.getWord()
 wordRevealed = wordGuess
 
-print(wordGuess)
-
 # Zašifrovat slovo, aby nebyly vidět písmenka
+x = 0
+while (x < len(wordGuess)):
+    wordRevealed[x] = "_"
