@@ -2,11 +2,12 @@ import wordList
 
 # Základní proměnné
 play = True
-lifes = 5
+lifes = 10
 wordGuess = wordList.getWord()
+charactersUsed = []
+wordHidden = []
 
 # Zašifrovat slovo, aby nebyly vidět písmenka
-wordHidden = []
 x = 0
 while (x < len(wordGuess)):
     wordHidden.append("_")
@@ -15,7 +16,13 @@ while (x < len(wordGuess)):
 # Hraje se do té doby, dokud není slovo uhádnuté a/nebo dokud má hráč životy.
 while (play == True):
     # Vypsat slovo, životy a již uhádnuté a neuhádnuté znaky
+    x = 0
+    characters = ""
+    while (x < len(charactersUsed)):
+        characters += charactersUsed[x] + ", "
+        x += 1
     print("Životy:", lifes)
+    print("Použité znaky:", characters)
     x = 0
     while (x < len(wordGuess)):
         print(wordHidden[x], end=" ")
@@ -35,6 +42,7 @@ while (play == True):
     # Ubrat život, když znak není ve slově
     if (found == False):
         lifes -= 1
+        charactersUsed.append(guess)
 
     # Zkontrolovat, zda hráč neuhodl slovo nebo zda má ještě hráč životy -> Případně ukončit hru, výhra/prohra, odhalit hádané slovo, vyzvat k další hře.
     x = 0
