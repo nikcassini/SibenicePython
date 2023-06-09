@@ -37,10 +37,16 @@ while (play == True):
         lifes -= 1
 
     # Zkontrolovat, zda hráč neuhodl slovo nebo zda má ještě hráč životy -> Případně ukončit hru, výhra/prohra, odhalit hádané slovo, vyzvat k další hře.
+    x = 0
+    wordFinal = ""
+    while (x < len(wordGuess)):
+        wordFinal += wordGuess[x]
+        x += 1
+
     if (wordHidden == wordGuess):
         play = False
-        print("Vyhrál jsi! Hádané slovo bylo: ", str(wordGuess))
+        print("Vyhrál jsi! Hádané slovo bylo:", wordFinal)
 
     if (lifes == 0):
         play = False
-        print("Prohrál jsi! Hádané slovo bylo: ", str(wordGuess))
+        print("Prohrál jsi! Hádané slovo bylo:", wordFinal)
