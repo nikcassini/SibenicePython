@@ -5,7 +5,6 @@ play = True
 lifes = 5
 wordGuess = wordList.getWord()
 
-
 # Zašifrovat slovo, aby nebyly vidět písmenka
 wordHidden = []
 x = 0
@@ -13,24 +12,35 @@ while (x < len(wordGuess)):
     wordHidden.append("_")
     x += 1
 
-
+# Hraje se do té doby, dokud není slovo uhádnuté a/nebo dokud má hráč životy.
 while (play == True):
-    # Vypsat slovo a nechat hráče hádat
+    # Vypsat slovo, životy a již uhádnuté a neuhádnuté znaky
+    print("Životy:", lifes)
     x = 0
     while (x < len(wordGuess)):
         print(wordHidden[x], end=" ")
         x += 1
-    guess = input("Zadejte písmeno: ")
+    print("\n")
 
-    # Zkontrolovat znak, který hráč hádá
+    # Nechat hráče hádat a zkontrolovat znak, který hádá
+    guess = str(input("Zadejte písmeno: "))
     found = False
+    x = 0
     while (x < len(wordGuess)):
-        if (guess == wordGuess[x]):
+        if (wordGuess[x] == guess):
             wordHidden[x] = wordGuess[x]
             found = True
         x += 1
+
     # Ubrat život, když znak není ve slově
     if (found == False):
         lifes -= 1
-        if (lifes == 0):
-            play = False
+
+    # Zkontrolovat, zda hráč neuhodl slovo nebo zda má ještě hráč životy -> Případně ukončit hru, výhra/prohra, odhalit hádané slovo, vyzvat k další hře.
+    if (wordHidden == wordGuess):
+        play = False
+        print("Vyhrál jsi! Hádané slovo bylo: ", str(wordGuess))
+
+    if (lifes == 0):
+        play = False
+        print("Prohrál jsi! Hádané slovo bylo: ", str(wordGuess))
